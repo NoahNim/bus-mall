@@ -1,3 +1,5 @@
+var images = [];
+
 function Image(imagePath){
   this.imagePath = imagePath;
   this.imageVotes = 0;
