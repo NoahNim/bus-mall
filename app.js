@@ -1,4 +1,4 @@
-var clicks = 0
+var clicks = 0;
 
 function Image(imagePath, imageClass){
   this.imagePath = imagePath;
@@ -30,13 +30,13 @@ var wineGlass = new Image('img/wine-glass.jpg', 'wineGlass');
 var oneEl = document.getElementById('one');
 var twoEl = document.getElementById('two');
 var threeEl = document.getElementById('three');
-var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass]
+var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass];
 var imageOne;
 var imageTwo;
 var imageThree;
-var results = document.getElementById('button')
-var reset = document.getElementById('restart')
-var theChart = document.getElementById('votes')
+var results = document.getElementById('button');
+var reset = document.getElementById('restart');
+var theChart = document.getElementById('votes');
 var clickData = [];
 
 function voteData(){
@@ -52,17 +52,17 @@ function imageClick(){
   var clickClass = this.className;
   for(var i = 0; i < theImage.length; i++){
     if(clickClass === theImage[i].imageClass){
-      theImage[i].imageVotes++
+      theImage[i].imageVotes++;
     }
   }
   function showResults(){
     if(clicks === 25){
-      results.style.display = 'block'
-      reset.style.display = 'block'
+      results.style.display = 'block';
+      reset.style.display = 'block';
     }
   }
 
-  clicks++
+  clicks++;
   if(clicks < 25){
     randomImgs();
   }
@@ -72,7 +72,7 @@ function imageClick(){
 
 // Benton helped me figure out this block
 function randomImgs() {
-  console.log('Random images function is running')
+  console.log('Random images function is running');
   imageOne = Math.floor(Math.random() * theImage.length);
   imageTwo = Math.floor(Math.random() * theImage.length);
   imageThree = Math.floor(Math.random() * theImage.length);
@@ -89,25 +89,25 @@ function randomImgs() {
   theImage[imageOne].imageShown++;
   twoEl.src = theImage[imageTwo].imagePath;
   twoEl.setAttribute('class', theImage[imageTwo].imageClass);
-  theImage[imageTwo].imageShown++
+  theImage[imageTwo].imageShown++;
   threeEl.src = theImage[imageThree].imagePath;
   threeEl.setAttribute('class', theImage[imageThree].imageClass);
-  theImage[imageThree].imageShown++
+  theImage[imageThree].imageShown++;
 }
 randomImgs();
 
 function renderChart(){
   buildChart();
-  theChart.style.visibility = 'visible'
+  theChart.style.visibility = 'visible';
 }
 
 function resetChart(){
   clicks = 15
   clickData = [];
   randomImgs();
-  results.style.display = 'none'
-  reset.style.display = 'none'
-  theChart.style.visibility = 'hidden'
+  results.style.display = 'none';
+  reset.style.display = 'none';
+  theChart.style.visibility = 'hidden';
 }
 
 oneEl.addEventListener('click', imageClick);
