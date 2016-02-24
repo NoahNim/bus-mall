@@ -1,17 +1,13 @@
-var images = [];
-
 function Image(imagePath){
   this.imagePath = imagePath;
   this.imageVotes = 0;
   this.imageShown = 0;
-
-  images.push(this);
 }
 
 var bag = new Image('img/bag.jpg');
 var banana = new Image('img/banana.jpg');
-var bathroom = new Image('image/bathroom.jpg')
-var bubblegum = new Image('image/bubblegum.jpg')
+var bathroom = new Image('img/bathroom.jpg')
+var bubblegum = new Image('img/bubblegum.jpg')
 var boots = new Image('img/boots.jpg');
 var chair = new Image('img/chair.jpg');
 var cthulhu = new Image('img/cthulhu.jpg');
@@ -22,7 +18,7 @@ var petSweep = new Image('img/pet-sweep.jpg');
 var scissors = new Image('img/scissors.jpg');
 var shark = new Image('img/shark.jpg');
 var sweep = new Image('img/sweep.png');
-var taunttaun = new Image('image/taunttaun.jpg')
+var taunttaun = new Image('img/tauntaun.jpg')
 var unicorn = new Image('img/unicorn.jpg');
 var usb = new Image('img/usb.gif');
 var waterCan = new Image('img/water-can.jpg');
@@ -31,6 +27,9 @@ var wineGlass = new Image('img/wine-glass.jpg');
 var oneEl = document.getElementById('one');
 var twoEl = document.getElementById('two');
 var threeEl = document.getElementById('three');
+var buttonOne = document.getElementById('numberOne');
+var buttonTwo = document.getElementById('numberTwo');
+var buttonThree = document.getElementById('numberThree');
 
 var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, taunttaun, unicorn, usb, waterCan, wineGlass]
 
@@ -45,3 +44,7 @@ function randomImgs() {
 }
 
 randomImgs();
+
+buttonOne.onclick = randomImgs
+buttonTwo.onclick = randomImgs
+buttonThree.onclick = randomImgs
