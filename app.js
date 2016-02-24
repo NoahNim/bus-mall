@@ -34,6 +34,7 @@ var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck
 var imageOne;
 var imageTwo;
 var imageThree;
+var results = document.getElementById('button')
 var clickData = [];
 
 function voteData(){
@@ -52,9 +53,18 @@ function imageClick(){
       theImage[i].imageVotes++
     }
   }
+  function showResults(){
+    if(clicks === 20){
+      results.style.display = 'block'
+    }
+  }
+
   clicks++
+  if(clicks < 21){
+    randomImgs();
+  }
   voteData();
-  randomImgs();
+  showResults();
 }
 
 // Benton helped me figure out this block
@@ -81,12 +91,13 @@ function randomImgs() {
   threeEl.setAttribute('class', theImage[imageThree].imageClass);
   theImage[imageThree].imageShown++
 }
+randomImgs();
 
-var theChartButton = document.createElement('button')
-var buttonText = document.createTextNode('Results')
+function renderChart(){
+  buildChart();
+}
 
 oneEl.addEventListener('click', imageClick);
 twoEl.addEventListener('click', imageClick);
 threeEl.addEventListener('click', imageClick);
-
-randomImgs();
+results.addEventListener('click', renderChart);
