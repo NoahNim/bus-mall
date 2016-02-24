@@ -1,3 +1,5 @@
+var clicks = 0
+
 function Image(imagePath, imageClass){
   this.imagePath = imagePath;
   this.imageClass = imageClass;
@@ -32,9 +34,16 @@ var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck
 var imageOne;
 var imageTwo;
 var imageThree;
+var clickData = [];
 
+function voteData(){
+  for(var i = 0; i < theImage.length; i++){
+    clickData.push(theImage[i].imageVotes);
+  }
+}
 // Carrie helped me learn all this now
 function imageClick(){
+  clickData = [];
   console.log(this.id);
   console.log(this.className);
   var clickClass = this.className;
@@ -43,6 +52,8 @@ function imageClick(){
       theImage[i].imageVotes++
     }
   }
+  clicks++
+  voteData();
   randomImgs();
 }
 
@@ -70,6 +81,10 @@ function randomImgs() {
   threeEl.setAttribute('class', theImage[imageThree].imageClass);
   theImage[imageThree].imageShown++
 }
+
+var theChartButton = document.createElement('button')
+var buttonText = document.createTextNode('Results')
+
 oneEl.addEventListener('click', imageClick);
 twoEl.addEventListener('click', imageClick);
 threeEl.addEventListener('click', imageClick);
