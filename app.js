@@ -95,16 +95,18 @@ function randomImgs() {
 }
 randomImgs();
 
+function renderChart(){
+  buildChart();
+}
+
 function resetChart(){
   clicks = 15
   clickData = [];
   randomImgs();
   results.style.display = 'none'
   reset.style.display = 'none'
-}
-
-function renderChart(){
-  buildChart();
+  var theChart = document.getElementById('votes')
+  theChart.style.visibility = 'hidden'
 }
 
 oneEl.addEventListener('click', imageClick);
