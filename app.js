@@ -1,48 +1,77 @@
-function Image(imagePath){
+function Image(imagePath, imageClass){
   this.imagePath = imagePath;
+  this.imageClass = imageClass;
   this.imageVotes = 0;
   this.imageShown = 0;
 }
 
-var bag = new Image('img/bag.jpg');
-var banana = new Image('img/banana.jpg');
-var bathroom = new Image('img/bathroom.jpg')
-var bubblegum = new Image('img/bubblegum.jpg')
-var boots = new Image('img/boots.jpg');
-var chair = new Image('img/chair.jpg');
-var cthulhu = new Image('img/cthulhu.jpg');
-var dogDuck = new Image('img/dog-duck.jpg')
-var dragon = new Image('img/dragon.jpg');
-var pen = new Image('img/pen.jpg');
-var petSweep = new Image('img/pet-sweep.jpg');
-var scissors = new Image('img/scissors.jpg');
-var shark = new Image('img/shark.jpg');
-var sweep = new Image('img/sweep.png');
-var taunttaun = new Image('img/tauntaun.jpg')
-var unicorn = new Image('img/unicorn.jpg');
-var usb = new Image('img/usb.gif');
-var waterCan = new Image('img/water-can.jpg');
-var wineGlass = new Image('img/wine-glass.jpg');
+var bag = new Image('img/bag.jpg', 'bag');
+var banana = new Image('img/banana.jpg', 'banana');
+var bathroom = new Image('img/bathroom.jpg', 'bathroom')
+var bubblegum = new Image('img/bubblegum.jpg', 'bubblegum')
+var boots = new Image('img/boots.jpg', 'boots');
+var chair = new Image('img/chair.jpg', 'chair');
+var cthulhu = new Image('img/cthulhu.jpg', 'cthulhu');
+var dogDuck = new Image('img/dog-duck.jpg', 'dogDuck')
+var dragon = new Image('img/dragon.jpg', 'dragon');
+var pen = new Image('img/pen.jpg', 'pen');
+var petSweep = new Image('img/pet-sweep.jpg', 'petSweep');
+var scissors = new Image('img/scissors.jpg', 'scissors');
+var shark = new Image('img/shark.jpg', 'shark');
+var sweep = new Image('img/sweep.png', 'sweep');
+var tauntaun = new Image('img/tauntaun.jpg', 'tauntaun')
+var unicorn = new Image('img/unicorn.jpg', 'unicorn');
+var usb = new Image('img/usb.gif', 'usb');
+var waterCan = new Image('img/water-can.jpg', 'waterCan');
+var wineGlass = new Image('img/wine-glass.jpg', 'wineGlass');
 
 var oneEl = document.getElementById('one');
 var twoEl = document.getElementById('two');
 var threeEl = document.getElementById('three');
-var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, taunttaun, unicorn, usb, waterCan, wineGlass]
+var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, unicorn, usb, waterCan, wineGlass]
+var imageOne;
+var imageTwo;
+var imageThree;
+
+// Carrie helped me learn all this now
+function imageClick(){
+  console.log(this.id);
+  console.log(this.className);
+  var clickClass = this.className;
+  for(var i = 0; i < theImage.length; i++){
+    if(clickClass === theImage[i].imageClass){
+      theImage[i].imageVotes++
+    }
+  }
+  randomImgs();
+}
 
 // Benton helped me figure out this block
 function randomImgs() {
   console.log('Random images function is running')
-  var imageOne = Math.floor(Math.random() * theImage.length);
+  imageOne = Math.floor(Math.random() * theImage.length);
+  imageTwo = Math.floor(Math.random() * theImage.length);
+  imageThree = Math.floor(Math.random() * theImage.length);
+
+  while(imageOne === imageTwo){
+    imageTwo = Math.floor(Math.random() * theImage.length);
+  }
+  while(imageOne === imageThree || imageTwo === imageThree){
+    imageThree = Math.floor(Math.random() * theImage.length);
+  }
+
   oneEl.src = theImage[imageOne].imagePath;
-  var imageTwo = Math.floor(Math.random() * theImage.length);
+  oneEl.setAttribute('class', theImage[imageOne].imageClass);
+  theImage[imageOne].imageShown++;
   twoEl.src = theImage[imageTwo].imagePath;
-  var imageThree = Math.floor(Math.random() * theImage.length);
+  twoEl.setAttribute('class', theImage[imageTwo].imageClass);
+  theImage[imageTwo].imageShown++
   threeEl.src = theImage[imageThree].imagePath;
+  threeEl.setAttribute('class', theImage[imageThree].imageClass);
+  theImage[imageThree].imageShown++
 }
+oneEl.addEventListener('click', imageClick);
+twoEl.addEventListener('click', imageClick);
+threeEl.addEventListener('click', imageClick);
 
 randomImgs();
-
-// tells the image what to do when clicked. my friend taught me about the onclick function, which I can also call in the HTML but I had to do it here because it did not want to work on the bloody third image!
-oneEl.onclick = randomImgs
-twoEl.onclick = randomImgs
-threeEl.onclick = randomImgs
