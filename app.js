@@ -27,9 +27,6 @@ var wineGlass = new Image('img/wine-glass.jpg');
 var oneEl = document.getElementById('one');
 var twoEl = document.getElementById('two');
 var threeEl = document.getElementById('three');
-var clickOne = document.getElementById('one');
-var clickTwo = document.getElementById('two');
-var clickThree = document.getElementById('three');
 var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, taunttaun, unicorn, usb, waterCan, wineGlass]
 
 // Benton helped me figure out this block
