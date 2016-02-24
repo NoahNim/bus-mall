@@ -1,3 +1,5 @@
+var clicks = 0
+
 function Image(imagePath, imageClass){
   this.imagePath = imagePath;
   this.imageClass = imageClass;
@@ -32,9 +34,18 @@ var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck
 var imageOne;
 var imageTwo;
 var imageThree;
+var results = document.getElementById('button')
+var reset = document.getElementById('restart')
+var clickData = [];
 
+function voteData(){
+  for(var i = 0; i < theImage.length; i++){
+    clickData.push(theImage[i].imageVotes);
+  }
+}
 // Carrie helped me learn all this now
 function imageClick(){
+  clickData = [];
   console.log(this.id);
   console.log(this.className);
   var clickClass = this.className;
@@ -43,7 +54,19 @@ function imageClick(){
       theImage[i].imageVotes++
     }
   }
-  randomImgs();
+  function showResults(){
+    if(clicks === 25){
+      results.style.display = 'block'
+      reset.style.display = 'block'
+    }
+  }
+
+  clicks++
+  if(clicks < 25){
+    randomImgs();
+  }
+  voteData();
+  showResults();
 }
 
 // Benton helped me figure out this block
@@ -70,8 +93,22 @@ function randomImgs() {
   threeEl.setAttribute('class', theImage[imageThree].imageClass);
   theImage[imageThree].imageShown++
 }
+randomImgs();
+
+function resetChart(){
+  clicks = 15
+  clickData = [];
+  randomImgs();
+  results.style.display = 'none'
+  reset.style.display = 'none'
+}
+
+function renderChart(){
+  buildChart();
+}
+
 oneEl.addEventListener('click', imageClick);
 twoEl.addEventListener('click', imageClick);
 threeEl.addEventListener('click', imageClick);
-
-randomImgs();
+results.addEventListener('click', renderChart);
+reset.addEventListener('click', resetChart);
