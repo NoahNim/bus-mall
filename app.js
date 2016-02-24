@@ -96,7 +96,7 @@ function randomImgs() {
 randomImgs();
 
 function resetChart(){
-  clicks = 11
+  clicks = 15
   clickData = [];
   randomImgs();
   results.style.display = 'none'
