@@ -1,11 +1,12 @@
-clickCounterOne = 0
-clickCounterTwo = 0
-clickCounterThree = 0
-
 function Image(imagePath){
   this.imagePath = imagePath;
   this.imageVotes = 0;
   this.imageShown = 0;
+}
+
+function clickCounter(){
+  clickCount++
+  console.log(clickCount);
 }
 
 var bag = new Image('img/bag.jpg');
@@ -31,17 +32,20 @@ var wineGlass = new Image('img/wine-glass.jpg');
 var oneEl = document.getElementById('one');
 var twoEl = document.getElementById('two');
 var threeEl = document.getElementById('three');
-
+var clickOne = document.getElementById('one');
+var clickTwo = document.getElementById('two');
+var clickThree = document.getElementById('three');
 var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, taunttaun, unicorn, usb, waterCan, wineGlass]
 
 // Benton helped me figure out this block
 function randomImgs() {
-  var index1 = Math.floor(Math.random() * theImage.length);
-  oneEl.src = theImage[index1].imagePath;
-  var index2 = Math.floor(Math.random() * theImage.length);
-  twoEl.src = theImage[index2].imagePath;
-  var index3 = Math.floor(Math.random() * theImage.length);
-  threeEl.src = theImage[index3].imagePath;
+  console.log('Random images function is running')
+  var imageOne = Math.floor(Math.random() * theImage.length);
+  oneEl.src = theImage[imageOne].imagePath;
+  var imageTwo = Math.floor(Math.random() * theImage.length);
+  twoEl.src = theImage[imageTwo].imagePath;
+  var imageThree = Math.floor(Math.random() * theImage.length);
+  threeEl.src = theImage[imageThree].imagePath;
 }
 
 randomImgs();
