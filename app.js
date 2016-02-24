@@ -1,3 +1,7 @@
+clickCounterOne = 0
+clickCounterTwo = 0
+clickCounterThree = 0
+
 function Image(imagePath){
   this.imagePath = imagePath;
   this.imageVotes = 0;
@@ -27,9 +31,6 @@ var wineGlass = new Image('img/wine-glass.jpg');
 var oneEl = document.getElementById('one');
 var twoEl = document.getElementById('two');
 var threeEl = document.getElementById('three');
-var buttonOne = document.getElementById('numberOne');
-var buttonTwo = document.getElementById('numberTwo');
-var buttonThree = document.getElementById('numberThree');
 
 var theImage = [bag, banana, bathroom, bubblegum, boots, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, taunttaun, unicorn, usb, waterCan, wineGlass]
 
@@ -45,6 +46,7 @@ function randomImgs() {
 
 randomImgs();
 
-buttonOne.onclick = randomImgs
-buttonTwo.onclick = randomImgs
-buttonThree.onclick = randomImgs
+// tells the image what to do when clicked. my friend taught me about the onclick function, which I can also call in the HTML but I had to do it here because it did not want to work on the bloody third image!
+oneEl.onclick = randomImgs
+twoEl.onclick = randomImgs
+threeEl.onclick = randomImgs
