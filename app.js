@@ -36,6 +36,7 @@ var imageTwo;
 var imageThree;
 var results = document.getElementById('button')
 var reset = document.getElementById('restart')
+var theChart = document.getElementById('votes')
 var clickData = [];
 
 function voteData(){
@@ -97,6 +98,7 @@ randomImgs();
 
 function renderChart(){
   buildChart();
+  theChart.style.visibility = 'visible'
 }
 
 function resetChart(){
@@ -105,7 +107,6 @@ function resetChart(){
   randomImgs();
   results.style.display = 'none'
   reset.style.display = 'none'
-  var theChart = document.getElementById('votes')
   theChart.style.visibility = 'hidden'
 }
 
