@@ -35,6 +35,7 @@ var imageOne;
 var imageTwo;
 var imageThree;
 var results = document.getElementById('button')
+var reset = document.getElementById('restart')
 var clickData = [];
 
 function voteData(){
@@ -54,13 +55,14 @@ function imageClick(){
     }
   }
   function showResults(){
-    if(clicks === 20){
+    if(clicks === 25){
       results.style.display = 'block'
+      reset.style.display = 'block'
     }
   }
 
   clicks++
-  if(clicks < 21){
+  if(clicks < 25){
     randomImgs();
   }
   voteData();
@@ -93,6 +95,14 @@ function randomImgs() {
 }
 randomImgs();
 
+function resetChart(){
+  clicks = 11
+  clickData = [];
+  randomImgs();
+  results.style.display = 'none'
+  reset.style.display = 'none'
+}
+
 function renderChart(){
   buildChart();
 }
@@ -101,3 +111,4 @@ oneEl.addEventListener('click', imageClick);
 twoEl.addEventListener('click', imageClick);
 threeEl.addEventListener('click', imageClick);
 results.addEventListener('click', renderChart);
+reset.addEventListener('click', resetChart);
