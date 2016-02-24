@@ -4,11 +4,6 @@ function Image(imagePath){
   this.imageShown = 0;
 }
 
-function clickCounter(){
-  clickCount++
-  console.log(clickCount);
-}
-
 var bag = new Image('img/bag.jpg');
 var banana = new Image('img/banana.jpg');
 var bathroom = new Image('img/bathroom.jpg')
