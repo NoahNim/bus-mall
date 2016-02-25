@@ -9,6 +9,7 @@ function supports_html5_storage() {
 
 supports_html5_storage();
 
+var createdChart = null;
 var clicks = 0;
 
 function Image(imagePath, imageClass){
@@ -55,6 +56,24 @@ function voteData(){
     clickData.push(theImage[i].imageVotes);
   }
 }
+
+function setLocalData(){
+  var stringedArrayData = JSON.stringify(theImage);
+  localStorage.setItem('imageData', stringedArrayData);
+}
+
+function updateLocalData(){
+  if(window.localStorage.length > 0){
+    console.log('Local storage has data stored');
+    var retrievedData = localStorage.getItem('imageData');
+    var parsedData = JSON.parse(retrievedData);
+
+    for(i = 0; i < parsedData.length; i++){
+      theImage[i].imageVotes = parsedData[i].imageVotes;
+      theImage[i].imageShown = parsedData[i].imageShown;
+    }
+  }
+}
 // Carrie helped me learn all this now
 function imageClick(){
   clickData = [];
@@ -64,6 +83,7 @@ function imageClick(){
   for(var i = 0; i < theImage.length; i++){
     if(clickClass === theImage[i].imageClass){
       theImage[i].imageVotes++;
+      setLocalData();
     }
   }
   function showResults(){
@@ -104,7 +124,9 @@ function randomImgs() {
   threeEl.src = theImage[imageThree].imagePath;
   threeEl.setAttribute('class', theImage[imageThree].imageClass);
   theImage[imageThree].imageShown++;
+  setLocalData();
 }
+updateLocalData();
 randomImgs();
 
 function renderChart(){
