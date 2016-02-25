@@ -1,5 +1,9 @@
 function buildChart(){
 
+  if(createdChart != null){
+    createdChart.destroy();
+  }
+
   var chart = document.getElementById('votes').getContext('2d');
   var chartData = clickData;
 
@@ -15,5 +19,5 @@ function buildChart(){
     ]
   };
 
-  new Chart(chart).Bar(barData);
+  createdChart = new Chart(chart).Bar(barData);
 }
