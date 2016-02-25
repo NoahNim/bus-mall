@@ -1,7 +1,7 @@
 function buildChart(){
 
   var chart = document.getElementById('votes').getContext('2d');
-  chartData = clickData
+  var chartData = clickData;
 
 
   var barData = {
@@ -13,7 +13,7 @@ function buildChart(){
         data : chartData
       }
     ]
-  }
+  };
 
   new Chart(chart).Bar(barData);
 }

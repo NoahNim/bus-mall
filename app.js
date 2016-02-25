@@ -1,3 +1,14 @@
+function supports_html5_storage() {
+  try {
+    console.log('Local storage is available!');
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}
+
+supports_html5_storage();
+
 var clicks = 0;
 
 function Image(imagePath, imageClass){
@@ -9,19 +20,19 @@ function Image(imagePath, imageClass){
 
 var bag = new Image('img/bag.jpg', 'bag');
 var banana = new Image('img/banana.jpg', 'banana');
-var bathroom = new Image('img/bathroom.jpg', 'bathroom')
-var bubblegum = new Image('img/bubblegum.jpg', 'bubblegum')
+var bathroom = new Image('img/bathroom.jpg', 'bathroom');
+var bubblegum = new Image('img/bubblegum.jpg', 'bubblegum');
 var boots = new Image('img/boots.jpg', 'boots');
 var chair = new Image('img/chair.jpg', 'chair');
 var cthulhu = new Image('img/cthulhu.jpg', 'cthulhu');
-var dogDuck = new Image('img/dog-duck.jpg', 'dogDuck')
+var dogDuck = new Image('img/dog-duck.jpg', 'dogDuck');
 var dragon = new Image('img/dragon.jpg', 'dragon');
 var pen = new Image('img/pen.jpg', 'pen');
 var petSweep = new Image('img/pet-sweep.jpg', 'petSweep');
 var scissors = new Image('img/scissors.jpg', 'scissors');
 var shark = new Image('img/shark.jpg', 'shark');
 var sweep = new Image('img/sweep.png', 'sweep');
-var tauntaun = new Image('img/tauntaun.jpg', 'tauntaun')
+var tauntaun = new Image('img/tauntaun.jpg', 'tauntaun');
 var unicorn = new Image('img/unicorn.jpg', 'unicorn');
 var usb = new Image('img/usb.gif', 'usb');
 var waterCan = new Image('img/water-can.jpg', 'waterCan');
@@ -102,7 +113,7 @@ function renderChart(){
 }
 
 function resetChart(){
-  clicks = 15
+  clicks = 15;
   clickData = [];
   randomImgs();
   results.style.display = 'none';
