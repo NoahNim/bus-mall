@@ -1,8 +1,10 @@
-
 #button {
     display: none;
+    background: linear-gradient(to bottom right, red, yellow);
+    font-size: 30px
 }
 
 #restart {
     display: none;
+    font-size: 30px
 }
